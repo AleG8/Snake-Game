@@ -2,7 +2,6 @@ const $canvas = document.querySelector('#canvas'),
     $reloadBtn = document.querySelector('.reloadBtn');
 
 const ctx = $canvas.getContext('2d');
-let score = 0;
 
 //Reset game
 $reloadBtn.addEventListener('click', ()=>{
@@ -101,6 +100,11 @@ function gameLoop(){
                     x: segment.x + snake.vx,
                     y: segment.y + snake.vy
                 });
+                snake.draw(
+                    segment.x,
+                    segment.y,
+                    'rgb(144, 238, 144)'
+                );
             //tail
             }else{
                 Object.assign(segment, {
@@ -116,13 +120,9 @@ function gameLoop(){
             snake.draw(
                 segment.x,
                 segment.y,
-                'rgba(144, 238, 144, 0.6)'
+                'rgba(144, 238, 144, 0.4)'
             );
         });
-        //Draw Score
-        ctx.fillStyle = '#000';
-        ctx.font = "20px Arial";
-        ctx.fillText(score, snake.segments[0].x + 7, snake.segments[0].y + 22);
         //Has eaten
         if(
             snake.segments[0].x === food.x &&
