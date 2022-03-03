@@ -116,7 +116,7 @@ function gameLoop(){
             snake.draw(
                 segment.x,
                 segment.y,
-                'lightgreen'
+                'rgba(144, 238, 144, 0.6)'
             );
         });
         //Draw Score
